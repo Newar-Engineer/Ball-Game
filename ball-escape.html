@@ -349,21 +349,21 @@ function drawBall() {
   if (!ball) return;
 
   ctx.save();
-  const grad = ctx.createRadialGradient(ball.x, ball.y, 0, ball.x, ball.y, ball.radius * 5);
-  grad.addColorStop(0, 'rgba(180, 210, 255, 0.35)');
-  grad.addColorStop(1, 'rgba(180, 210, 255, 0)');
-  ctx.fillStyle = grad;
+  ctx.globalAlpha = 0.15;
+  ctx.fillStyle = '#88bbff';
   ctx.beginPath();
-  ctx.arc(ball.x, ball.y, ball.radius * 5, 0, Math.PI * 2);
+  ctx.arc(ball.x, ball.y, ball.radius * 4, 0, Math.PI * 2);
   ctx.fill();
-  ctx.restore();
 
-  ctx.save();
-  ctx.shadowBlur = 20;
-  ctx.shadowColor = '#88bbff';
+  ctx.globalAlpha = 0.3;
   ctx.beginPath();
-  ctx.arc(ball.x, ball.y, ball.radius * 0.6, 0, Math.PI * 2);
-  ctx.fillStyle = 'rgba(210, 230, 255, 0.6)';
+  ctx.arc(ball.x, ball.y, ball.radius * 2, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.globalAlpha = 0.6;
+  ctx.beginPath();
+  ctx.arc(ball.x, ball.y, ball.radius * 1.2, 0, Math.PI * 2);
+  ctx.fillStyle = '#cce0ff';
   ctx.fill();
   ctx.restore();
 
@@ -418,8 +418,8 @@ function drawVictory() {
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.font = `800 ${size}px 'Segoe UI', system-ui, sans-serif`;
-  ctx.shadowBlur = 40;
-  ctx.shadowColor = '#fff';
+  ctx.fillStyle = 'rgba(255,255,255,0.15)';
+  ctx.fillText('✦ ESCAPED! ✦', cx + 4, cy + 4);
   ctx.fillStyle = '#fff';
   ctx.fillText('✦ ESCAPED! ✦', cx, cy);
   ctx.restore();
